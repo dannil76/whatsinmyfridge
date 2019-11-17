@@ -31,7 +31,7 @@ function ProductTable(props) {
       <thead>
         <tr>
           <th width="1%">#</th>
-          <th>Name</th>
+          <th>Ingrediens</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
