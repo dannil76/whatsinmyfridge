@@ -10,7 +10,7 @@ function SearchBar(props) {
   } = props;
 
   return (
-    <Form className="SearchBar">
+    <Form className="SearchBar" onSubmit={(event) => event.preventDefault()}>
       <Form.Group controlId="searchField">
         <Form.Control
           type="text"
