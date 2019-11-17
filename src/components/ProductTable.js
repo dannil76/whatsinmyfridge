@@ -1,18 +1,19 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
 import ProductCategoryRow from './ProductCategoryRow';
 import ProductRow from './ProductRow';
 
 function ProductTable(props) {
 
-  const { products, filterText, inStockOnly } = props;
+  const { products, filterText, outOfStockOnly } = props;
 
   const rows = [];
   let lastCategory = null;
 
-  products.forEach((product) => {
+  products.forEach((product, i) => {
     const { name, stocked, category } = product;
 
-    if(name.indexOf(filterText) === -1 || (inStockOnly && !stocked)) {
+    if(name.toLowerCase().indexOf(filterText.toLowerCase()) === -1 || (outOfStockOnly && stocked)) {
       return;
     }
 
@@ -20,21 +21,21 @@ function ProductTable(props) {
       rows.push(<ProductCategoryRow category={category} key={category} />);
     }
 
-    rows.push(<ProductRow product={product} key={name} />)
+    rows.push(<ProductRow product={product} key={name} index={i + 1} />)
 
     lastCategory = category;
   });
 
   return (
-    <table className="ProductTable">
-      <thead align="left">
+    <Table responsive striped hover borderless variant="dark">
+      <thead>
         <tr>
+          <th width="1%">#</th>
           <th>Name</th>
-          <th>Price</th>
         </tr>
       </thead>
-      <tbody align="left">{rows}</tbody>
-    </table>
+      <tbody>{rows}</tbody>
+    </Table>
   );
 }
 

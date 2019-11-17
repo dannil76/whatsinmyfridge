@@ -1,43 +1,36 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
-import './index.css';
 
 const PRODUCTS = [
   {
-    name: 'Football',
-    category: 'Sporting Goods',
-    price: '$49.99',
+    name: 'Vetemjöl',
+    category: 'Skafferi',
     stocked: true,
   },
   {
-    name: 'Baseball',
-    category: 'Sporting Goods',
-    price: '$9.99',
+    name: 'Havregryn',
+    category: 'Skafferi',
     stocked: true,
   },
   {
-    name: 'Basketball',
-    category: 'Sporting Goods',
-    price: '$29.99',
+    name: 'Socker',
+    category: 'Skafferi',
     stocked: false,
   },
   {
-    name: 'iPod Touch',
-    category: 'Electronics',
-    price: '$99.99',
+    name: 'Blandfärs',
+    category: 'Kött',
     stocked: true,
   },
   {
-    name: 'iPhone 5',
-    category: 'Electronics',
-    price: '$399.99',
+    name: 'Nötfärs',
+    category: 'Kött',
     stocked: false,
   },
   { 
-    name: 'Nexus 7',
-    category: 'Electronics',
-    price: '$199.99',
+    name: 'Fläskfilé',
+    category: 'Kött',
     stocked: true,
   },
 ];

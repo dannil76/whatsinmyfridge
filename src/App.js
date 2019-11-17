@@ -1,13 +1,20 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import FilterableProductTable from './components/FilterableProductTable';
-import './App.css';
 
-function App(props) {
+function App({ data }) {
   return (
-    <div className="App">
-      <h1>What's In My Fridge</h1>
-      <FilterableProductTable products={props.data} />
-    </div>
+    <Container className="mt-4">
+      <h1 className="text-center">Vad har vi hemma?</h1>
+      <hr />
+      <Row className="justify-content-md-center">
+        <Col md="auto">
+          <FilterableProductTable products={data} />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -1,31 +1,34 @@
 import React from 'react';
+import Form from 'react-bootstrap/Form';
 
 function SearchBar(props) {
-  const { filterText, inStockOnly, onFilterTextChange, onInStockOnly } = props;
+  const {
+    filterText,
+    outOfStockOnly,
+    onFilterTextChange,
+    onOutOfStockOnly,
+  } = props;
 
   return (
-    <div className="SearchBar">
-      <form>
-        <div>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={filterText}
-            onChange={onFilterTextChange}
-          />
-        </div>
-        <div>
-          <input
-            id="inStock"
-            type="checkbox"
-            checked={inStockOnly}
-            onChange={onInStockOnly}
-          />
-          {' '}
-          Only show products in stock
-        </div>
-      </form>
-    </div>
+    <Form className="SearchBar">
+      <Form.Group controlId="searchField">
+        <Form.Control
+          type="text"
+          placeholder="Vad letar du efter?"
+          size="lg"
+          value={filterText}
+          onChange={onFilterTextChange}
+        />
+      </Form.Group>
+      <Form.Group controlId="inStockCheckbox">
+        <Form.Check
+          type="switch"
+          checked={outOfStockOnly}
+          onChange={onOutOfStockOnly}
+          label="Visa bara produkter som är slut"
+        />
+      </Form.Group>
+    </Form>
   );
 }
 

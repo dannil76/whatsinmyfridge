@@ -5,30 +5,30 @@ import SearchBar from './SearchBar';
 function FilterableProductTable({products}) {
 
   const [filterText, setFilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);
+  const [outOfStockOnly, setOutOfStockOnly] = useState(false);
 
   const handleFilterTextChange = (event) => {
     const text = event.target.value;
     setFilterText(text);
   };
 
-  const handleInStockChange = (event) => {
+  const handleOutOfStockChange = (event) => {
     const checked = event.target.checked;
-    setInStockOnly(checked);
+    setOutOfStockOnly(checked);
   };
 
   return (
     <div className="FilterableProductTable">
       <SearchBar
         filterText={filterText}
-        inStockOnly={inStockOnly}
+        outOfStockOnly={outOfStockOnly}
         onFilterTextChange={handleFilterTextChange}
-        onInStockOnly={handleInStockChange}
+        onOutOfStockOnly={handleOutOfStockChange}
       />
       <ProductTable
         products={products}
-        filterText={filterText}
-        inStockOnly={inStockOnly}
+        filterText={filterText.length > 1 ? filterText : ''}
+        outOfStockOnly={outOfStockOnly}
       />
     </div>
   );
