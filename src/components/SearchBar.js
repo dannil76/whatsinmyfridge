@@ -7,6 +7,7 @@ function SearchBar(props) {
     onFilterTextChange,
     outOfStockOnly,
     onOutOfStockOnly,
+    hasOutOfStock,
   } = props;
 
   return (
@@ -20,14 +21,16 @@ function SearchBar(props) {
           onChange={onFilterTextChange}
         />
       </Form.Group>
-      <Form.Group controlId="inStockCheckbox">
-        <Form.Check
-          type="switch"
-          checked={outOfStockOnly}
-          onChange={onOutOfStockOnly}
-          label="Visa bara produkter som är slut"
-        />
-      </Form.Group>
+      {hasOutOfStock &&
+        <Form.Group controlId="inStockCheckbox">
+          <Form.Check
+            type="switch"
+            checked={outOfStockOnly}
+            onChange={onOutOfStockOnly}
+            label="Visa bara produkter som är slut"
+          />
+        </Form.Group>
+      }
     </Form>
   );
 }
