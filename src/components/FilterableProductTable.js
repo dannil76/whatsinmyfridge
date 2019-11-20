@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
+import useProducts from '../productsDb';
 
-function FilterableProductTable({products}) {
+function FilterableProductTable() {
 
   const [filterText, setFilterText] = useState('');
   const [outOfStockOnly, setOutOfStockOnly] = useState(false);
+
+  const products = useProducts();
 
   const handleFilterTextChange = (event) => {
     const text = event.target.value;
