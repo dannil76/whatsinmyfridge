@@ -11,17 +11,17 @@ function ProductTable(props) {
   let lastCategory = null;
 
   products.forEach((product, i) => {
-    const { name, stocked, category } = product;
+    const { id, name, stocked, category } = product;
 
     if(name.toLowerCase().indexOf(filterText.toLowerCase()) === -1 || (outOfStockOnly && stocked)) {
       return;
     }
 
     if(category !== lastCategory) {
-      rows.push(<ProductCategoryRow category={category} key={category} />);
+      rows.push(<ProductCategoryRow category={category} key={id + category} />);
     }
 
-    rows.push(<ProductRow product={product} key={name} index={i + 1} />)
+    rows.push(<ProductRow product={product} key={id} index={i + 1} />);
 
     lastCategory = category;
   });
@@ -31,7 +31,7 @@ function ProductTable(props) {
       <thead>
         <tr>
           <th width="1%">#</th>
-          <th>Ingrediens</th>
+          <th>Ingredienser</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
