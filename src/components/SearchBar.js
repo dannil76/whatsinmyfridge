@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 function SearchBar(props) {
   const {
     filterText,
-    outOfStockOnly,
     onFilterTextChange,
+    outOfStockOnly,
     onOutOfStockOnly,
   } = props;
 
