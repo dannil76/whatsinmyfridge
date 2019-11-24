@@ -48,14 +48,15 @@ function FilterableProductTable() {
     setOutOfStockOnly(checked);
   };
 
-  const handleFilterChange = (value) => {
-    console.log(value);
-    setFilterCategory(value);
+  const handleFilterChange = (category) => {
+    console.log(category);
+    setFilterCategory(category);
   };
 
   return (
     <div className="FilterableProductTable">
       <SearchBar
+        products={products}
         filterText={filterText}
         onFilterTextChange={handleFilterTextChange}
         filterCategory={filterCategory}

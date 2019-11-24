@@ -10,7 +10,7 @@ function ProductTable(props) {
   const rows = [];
   let lastCategory = null;
 
-  products.forEach((product, i) => {
+  products.forEach((product) => {
     const { id, name, stocked, category } = product;
 
     if(name.toLowerCase().indexOf(filterText.toLowerCase()) === -1 || (outOfStockOnly && stocked)) {
@@ -25,7 +25,7 @@ function ProductTable(props) {
       rows.push(<ProductCategoryRow category={category} key={id + category} />);
     }
 
-    rows.push(<ProductRow product={product} key={id} index={i + 1} />);
+    rows.push(<ProductRow product={product} key={id} />);
 
     lastCategory = category;
   });

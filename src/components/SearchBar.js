@@ -6,6 +6,7 @@ import Filter from './Filter';
 
 function SearchBar(props) {
   const {
+    products,
     filterText,
     onFilterTextChange,
     outOfStockOnly,
@@ -14,6 +15,13 @@ function SearchBar(props) {
     filterCategory,
     onFilterCategoryChange,
   } = props;
+
+  const categories = products.reduce((acc, { category, stocked }) => {
+    if (!acc.includes(category)) {
+      outOfStockOnly ? !stocked && acc.push(category) : acc.push(category);
+    }
+    return acc;
+  }, []);
 
   return (
     <Form className="SearchBar" onSubmit={(event) => event.preventDefault()}>
@@ -42,8 +50,12 @@ function SearchBar(props) {
           value={filterCategory}
           onChange={onFilterCategoryChange}
         >
-          {['Skafferi', 'Mejeri', 'Kött'].map((category, index) => {
-            return <ToggleButton key={index} value={category}>{category}</ToggleButton>;
+          {categories.map((category) => {
+            return (
+              <ToggleButton key={category} value={category}>
+                {category}
+              </ToggleButton>
+            );
           })}
         </ToggleButtonGroup>
       </Filter>
