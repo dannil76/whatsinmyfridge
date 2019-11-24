@@ -18,7 +18,6 @@ function ProductRow({product, index}) {
 
   return (
     <tr>
-      <td>{index}</td>
       <td className="name">{stockName}</td>
     </tr>
   );

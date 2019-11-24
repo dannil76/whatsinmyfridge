@@ -1,6 +1,5 @@
 .out-of-stock {
-  background-color: hotpink;
-  color: #000;
+  color: hotpink;
   display: inline;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }

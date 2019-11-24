@@ -8,8 +8,6 @@ function App() {
 
   return (
     <Container className="mt-4">
-      <h1 className="text-center">Vad har vi hemma?</h1>
-      <hr />
       <Row className="justify-content-md-center">
         <Col md="auto">
           <FilterableProductTable />
