@@ -5,7 +5,7 @@ import ProductRow from './ProductRow';
 
 function ProductTable(props) {
 
-  const { products, filterText, outOfStockOnly } = props;
+  const { products, filterText, filterCategory, outOfStockOnly } = props;
 
   const rows = [];
   let lastCategory = null;
@@ -14,6 +14,10 @@ function ProductTable(props) {
     const { id, name, stocked, category } = product;
 
     if(name.toLowerCase().indexOf(filterText.toLowerCase()) === -1 || (outOfStockOnly && stocked)) {
+      return;
+    }
+
+    if(category.indexOf(filterCategory) === -1) {
       return;
     }
 
@@ -28,9 +32,9 @@ function ProductTable(props) {
 
   return (
     <div style={{ maxHeight: '55vh', overflowY: 'scroll' }}>
-    <Table responsive striped hover borderless variant="dark">
-      <tbody>{rows}</tbody>
-    </Table>
+      <Table responsive striped hover borderless variant="dark">
+        <tbody>{rows}</tbody>
+      </Table>
     </div>
   );
 }
