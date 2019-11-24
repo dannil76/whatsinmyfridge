@@ -17,17 +17,16 @@ function ProductTable(props) {
       return;
     }
 
-    if(category.indexOf(filterCategory) === -1) {
+    if(!filterCategory.includes(category) && filterCategory.length > 0) {
       return;
     }
 
     if(category !== lastCategory) {
       rows.push(<ProductCategoryRow category={category} key={id + category} />);
     }
+    lastCategory = category;
 
     rows.push(<ProductRow product={product} key={id} />);
-
-    lastCategory = category;
   });
 
   return (
