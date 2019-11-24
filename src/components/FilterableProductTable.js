@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
-import useProducts from '../productsDb';
+import useProducts from '../productsHook';
 
 function FilterableProductTable() {
 
