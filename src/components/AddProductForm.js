@@ -3,6 +3,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import firebase from '../firebase';
+
 import './AddProductForm.css';
 
 function AddProductForm(props) {
@@ -12,7 +14,19 @@ function AddProductForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form submitted');
+    firebase
+      .firestore()
+      .collection('products')
+      .add({
+        name: productName,
+        category: productCategory,
+        stocked: inStock
+      })
+      .then(() => {
+        setProductName('');
+        setProductCategory('');
+        setInStock(false);
+      });
   };
 
   const onProductNameChange = (event) => {
@@ -59,6 +73,14 @@ function AddProductForm(props) {
       </Form.Row>
       <Button variant="success" type="submit" block="true" size="lg">
         Spara
+      </Button>
+      <Button
+        variant="dark"
+        type="button"
+        block="true"
+        onClick={() => props.handleModal()}
+      >
+        Stäng
       </Button>
     </Form>
   );
