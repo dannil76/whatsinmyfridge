@@ -10,7 +10,6 @@ import AddProductForm from './components/AddProductForm';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-
   const handleModal = () => setShowModal(!showModal);
 
   return (
@@ -19,14 +18,14 @@ function App() {
         <Row className="justify-content-md-center">
           <Col md="auto">
             <FilterableProductTable />
-            <Button variant="info" onClick={handleModal}>
+            <Button variant="info" onClick={handleModal} block="true">
               Lägg till ingrediens
             </Button>
           </Col>
         </Row>
       </Container>
-      <Modal show={showModal} onHide={handleModal}>
-        <AddProductForm />
+      <Modal show={showModal} centered="true" onHide={handleModal}>
+        <AddProductForm handleModal={handleModal} />
       </Modal>
     </>
   );
