@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
 import useProducts from '../productsHook';
+
+import './FilterableProductTable.css';
 
 function FilterableProductTable() {
 
@@ -54,7 +57,7 @@ function FilterableProductTable() {
   };
 
   return (
-    <div className="FilterableProductTable">
+    <div className="filterable-product-table">
       <SearchBar
         products={products}
         filterText={filterText}
