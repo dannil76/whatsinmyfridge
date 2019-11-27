@@ -16,7 +16,7 @@ function SearchBar(props) {
     onFilterCategoryChange,
   } = props;
 
-  const categories = products.reduce((acc, { category, stocked }) => {
+  const filterableCategories = products.reduce((acc, { category, stocked }) => {
     if (!acc.includes(category)) {
       outOfStockOnly ? !stocked && acc.push(category) : acc.push(category);
     }
@@ -50,7 +50,7 @@ function SearchBar(props) {
           value={filterCategory}
           onChange={onFilterCategoryChange}
         >
-          {categories.map((category) => {
+          {filterableCategories.map((category) => {
             return (
               <ToggleButton key={category} value={category}>
                 {category}
