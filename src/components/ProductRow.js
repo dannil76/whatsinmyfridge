@@ -1,8 +1,9 @@
 import React from 'react';
 import Badge from 'react-bootstrap/Badge';
+
 import './ProductRow.css';
 
-function ProductRow({product, index}) {
+function ProductRow({product}) {
   const { name, stocked } = product;
 
   const stockName = stocked ? (

@@ -1,5 +1,6 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+
 import ProductCategoryRow from './ProductCategoryRow';
 import ProductRow from './ProductRow';
 
@@ -30,7 +31,7 @@ function ProductTable(props) {
   });
 
   return (
-    <div style={{ maxHeight: '50vh', overflowY: 'scroll' }}>
+    <div style={{ maxHeight: '55vh', overflowY: 'scroll' }}>
       <Table responsive striped hover borderless variant="dark">
         <tbody>{rows}</tbody>
       </Table>
