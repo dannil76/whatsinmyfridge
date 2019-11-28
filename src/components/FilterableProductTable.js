@@ -15,22 +15,6 @@ function FilterableProductTable() {
 
   const products = useProducts();
 
-  products.sort((a, b) => {
-    const cA = a.category.toUpperCase();
-    const cB = b.category.toUpperCase();
-
-    if (cA < cB) return -1;
-    if (cA > cB) return 1;
-
-    const nA = a.name.toUpperCase();
-    const nB = b.name.toUpperCase();
-
-    if (nA < nB) return -1;
-    if (nA > nB) return 1;
-
-    return 0;
-  });
-
   useEffect(() => {
     const outOfStockCount = products.reduce((acc, { stocked }) => {
       !stocked && acc++;
