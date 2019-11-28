@@ -14,15 +14,15 @@ function App() {
 
   return (
     <>
-      <Container className="mt-4">
+      <Container className="mt-3">
         <Row className="justify-content-md-center">
-          <Col md="auto">
+          <Col>
             <FilterableProductTable />
-            <Button variant="info" onClick={handleModal} block="true">
-              Lägg till ingrediens
-            </Button>
           </Col>
         </Row>
+        <Button variant="info" onClick={handleModal} block="true">
+          Lägg till ingrediens
+        </Button>
       </Container>
       <Modal show={showModal} centered="true" onHide={handleModal}>
         <AddProductForm handleModal={handleModal} />
