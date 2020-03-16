@@ -6,11 +6,17 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import FilterableProductTable from './components/FilterableProductTable';
-import AddProductForm from './components/AddProductForm';
+import AddProduct from './components/AddProduct';
+import EditProduct from './components/EditProduct';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-  const handleModal = () => setShowModal(!showModal);
+  const [addEdit, setAddEdit] = useState(null);
+
+  const handleModal = (event) => {
+    setAddEdit(event.currentTarget.value);
+    setShowModal(!showModal);
+  };
 
   return (
     <>
@@ -20,12 +26,16 @@ function App() {
             <FilterableProductTable />
           </Col>
         </Row>
-        <Button variant="info" onClick={handleModal} block="true">
+        <Button variant="info" onClick={handleModal} value="add" block="true">
           Lägg till ingrediens
         </Button>
       </Container>
       <Modal show={showModal} centered="true" onHide={handleModal}>
-        <AddProductForm handleModal={handleModal} />
+        {addEdit === 'add' ? (
+          <AddProduct handleModal={handleModal} />
+        ) : (
+          <EditProduct handleModal={handleModal} />
+        )}
       </Modal>
     </>
   );
