@@ -32,7 +32,7 @@ function ProductTable(props) {
 
   return (
     <div style={{ maxHeight: '55vh', overflowY: 'scroll' }}>
-      <Table responsive striped hover borderless variant="dark">
+      <Table responsive striped borderless variant="dark">
         <tbody>{rows}</tbody>
       </Table>
     </div>
