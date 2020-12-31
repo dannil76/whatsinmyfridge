@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import './ProductForm.css';
 
 function ProductForm(props) {
-
   const {
     handleSubmit,
     setProductName,
@@ -18,12 +17,12 @@ function ProductForm(props) {
     handleModal,
   } = props;
 
-  const onProductNameChange = (event) => {
-    setProductName(event.target.value);
+  const onProductNameChange = event => {
+    setProductName(event.currentTarget.value);
   };
 
-  const onProductCategoryChange = (event) => {
-    setProductCategory(event.target.value);
+  const onProductCategoryChange = event => {
+    setProductCategory(event.currentTarget.value);
   };
 
   const onStockChange = () => {
@@ -67,7 +66,7 @@ function ProductForm(props) {
         variant="dark"
         type="button"
         block="true"
-        onClick={() => handleModal()}
+        onClick={handleModal}
       >
         Stäng
       </Button>
