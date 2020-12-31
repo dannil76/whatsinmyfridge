@@ -10,12 +10,13 @@ import AddProduct from './components/AddProduct';
 import EditProduct from './components/EditProduct';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const [addEdit, setAddEdit] = useState(null);
+  const [displayModalState, setDisplayModalState] = useState(false);
+  const [productAddEditState, setProductAddEditState] = useState(null);
 
-  const handleModal = (event) => {
-    setAddEdit(event.currentTarget.value);
-    setShowModal(!showModal);
+  const handleModal = event => {
+    const ProductAddEditButtonValue = event.currentTarget.value;
+    setProductAddEditState(ProductAddEditButtonValue);
+    setDisplayModalState(!displayModalState);
   };
 
   return (
@@ -27,11 +28,11 @@ function App() {
           </Col>
         </Row>
         <Button variant="info" onClick={handleModal} value="add" block="true">
-          Lägg till ingrediens
+          Lägg till
         </Button>
       </Container>
-      <Modal show={showModal} centered="true" onHide={handleModal}>
-        {addEdit === 'add' ? (
+      <Modal show={displayModalState} centered="true" onHide={handleModal}>
+        {productAddEditState === 'add' ? (
           <AddProduct handleModal={handleModal} />
         ) : (
           <EditProduct handleModal={handleModal} />
