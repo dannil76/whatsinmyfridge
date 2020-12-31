@@ -8,7 +8,7 @@ function AddProduct(props) {
   const [productCategory, setProductCategory] = useState('');
   const [inStock, setInStock] = useState(false);
 
-  const onAddSubmit = (event) => {
+  const onAddProductSubmit = event => {
     event.preventDefault();
     firebase
       .firestore()
@@ -22,12 +22,13 @@ function AddProduct(props) {
         setProductName('');
         setProductCategory('');
         setInStock(false);
-      });
+      })
+      .catch(error => console.error(error));
   };
 
   return (
     <ProductForm
-      handleSubmit={onAddSubmit}
+      handleSubmit={onAddProductSubmit}
       setProductName={setProductName}
       productName={productName}
       setProductCategory={setProductCategory}
