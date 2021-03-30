@@ -6,7 +6,7 @@ import useProducts from '../productsHook';
 
 import './FilterableProductTable.css';
 
-function FilterableProductTable() {
+function FilterableProductTable(props) {
 
   const [filterText, setFilterText] = useState('');
   const [filterCategory, setFilterCategory] = useState([]);
@@ -25,18 +25,17 @@ function FilterableProductTable() {
   }, [products]);
   
   
-  const handleFilterTextChange = (event) => {
+  const handleFilterTextChange = event => {
     const text = event.target.value;
     setFilterText(text);
   };
 
-  const handleOutOfStockChange = (event) => {
+  const handleOutOfStockChange = event => {
     const checked = event.target.checked;
     setOutOfStockOnly(checked);
   };
 
-  const handleFilterChange = (category) => {
-    console.log(category);
+  const handleFilterChange = category => {
     setFilterCategory(category);
   };
 
@@ -57,6 +56,7 @@ function FilterableProductTable() {
         filterText={filterText.length > 1 ? filterText : ''}
         filterCategory={filterCategory}
         outOfStockOnly={outOfStockOnly}
+        handleEditProduct={props.handleEditProduct}
       />
     </div>
   );

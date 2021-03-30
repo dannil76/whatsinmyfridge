@@ -14,8 +14,14 @@ function App() {
   const [productAddEditState, setProductAddEditState] = useState(null);
 
   const handleModal = event => {
-    const ProductAddEditButtonValue = event.currentTarget.value;
-    setProductAddEditState(ProductAddEditButtonValue);
+    const productAddEditButtonValue = event.currentTarget.value;
+    setProductAddEditState(productAddEditButtonValue);
+    setDisplayModalState(!displayModalState);
+  };
+
+  const handleEditProduct = event => {
+    const productAddEditButtonValue = event.currentTarget.value;
+    setProductAddEditState(productAddEditButtonValue);
     setDisplayModalState(!displayModalState);
   };
 
@@ -24,7 +30,7 @@ function App() {
       <Container className="mt-3">
         <Row className="justify-content-md-center">
           <Col>
-            <FilterableProductTable />
+            <FilterableProductTable handleModal={handleModal} handleEditProduct={handleEditProduct} />
           </Col>
         </Row>
         <Button variant="info" onClick={handleModal} value="add" block="true">

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 import ProductForm from './ProductForm';
-import firebase from '../firebase';
+// import firebase from '../firebase';
 
 function EditProduct(props) {
-  const [productName, setProductName] = useState('');
-  const [productCategory, setProductCategory] = useState('');
-  const [inStock, setInStock] = useState(false);
+  const [productName, setProductName] = useState(props.productName);
+  const [productCategory, setProductCategory] = useState(props.productCategory);
+  const [inStock, setInStock] = useState(props.inStock);
 
-  const onEditSubmit = (event) => {
+  const onEditProductSubmit = event => {
     event.preventDefault();
     // firebase
     //   .firestore()
@@ -27,7 +27,7 @@ function EditProduct(props) {
 
   return (
     <ProductForm
-      handleSubmit={onEditSubmit}
+      handleSubmit={onEditProductSubmit}
       setProductName={setProductName}
       productName={productName}
       setProductCategory={setProductCategory}

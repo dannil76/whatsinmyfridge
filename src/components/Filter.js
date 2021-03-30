@@ -2,10 +2,12 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 
+import './Filter.css';
+
 function Filter({ children }) {
   return (
-    <Accordion>
-      <Card>
+    <Accordion defaultActiveKey="0">
+      <Card bg="dark" text="secondary">
         <Accordion.Toggle as={Card.Header} eventKey="0">
           Filtrera
         </Accordion.Toggle>

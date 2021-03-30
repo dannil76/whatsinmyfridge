@@ -9,8 +9,8 @@ function useProducts() {
     const unsub = firebase
       .firestore()
       .collection('products')
-      .onSnapshot((snapshot) => {
-        const newProducts = snapshot.docs.map((doc) => ({
+      .onSnapshot(snapshot => {
+        const newProducts = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
         }));

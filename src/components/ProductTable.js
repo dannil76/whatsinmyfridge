@@ -6,12 +6,12 @@ import ProductRow from './ProductRow';
 
 function ProductTable(props) {
 
-  const { products, filterText, filterCategory, outOfStockOnly } = props;
+  const { products, filterText, filterCategory, outOfStockOnly, handleEditProduct } = props;
 
   const rows = [];
   let lastCategory = null;
 
-  products.forEach((product) => {
+  products.forEach(product => {
     const { id, name, stocked, category } = product;
 
     if(name.toLowerCase().indexOf(filterText.toLowerCase()) === -1 || (outOfStockOnly && stocked)) {
@@ -27,11 +27,11 @@ function ProductTable(props) {
     }
     lastCategory = category;
 
-    rows.push(<ProductRow product={product} key={id} />);
+    rows.push(<ProductRow product={product} handleEditProduct={handleEditProduct} key={id} />);
   });
 
   return (
-    <div style={{ maxHeight: '55vh', overflowY: 'scroll' }}>
+    <div style={{ maxHeight: '60vh', overflowY: 'scroll' }}>
       <Table responsive striped borderless variant="dark">
         <tbody>{rows}</tbody>
       </Table>

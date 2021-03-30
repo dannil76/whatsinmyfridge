@@ -5,6 +5,8 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 
 import Filter from './Filter';
 
+import './SearchBar.css';
+
 function SearchBar(props) {
   const {
     products,
@@ -25,11 +27,11 @@ function SearchBar(props) {
   }, []);
 
   return (
-    <Form className="SearchBar" onSubmit={(event) => event.preventDefault()}>
+    <Form className="SearchBar" onSubmit={event => event.preventDefault()}>
       <Form.Group controlId="searchField">
         <Form.Control
           type="text"
-          placeholder="Vilken ingrediens letar du efter?"
+          placeholder="Vad letar du efter?"
           size="lg"
           value={filterText}
           onChange={onFilterTextChange}
@@ -49,11 +51,12 @@ function SearchBar(props) {
         <ToggleButtonGroup
           type="checkbox"
           value={filterCategory}
+          size="sm"
           onChange={onFilterCategoryChange}
         >
-          {filterableCategories.map((category) => {
+          {filterableCategories.map(category => {
             return (
-              <ToggleButton key={category} value={category}>
+              <ToggleButton key={category} value={category} variant="secondary">
                 {category}
               </ToggleButton>
             );
