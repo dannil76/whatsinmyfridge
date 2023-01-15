@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import firebase from './firebase';
+import firebase from "./firebase";
 
 function useProducts() {
   const [products, setProducts] = useState([]);
@@ -8,9 +8,9 @@ function useProducts() {
   useEffect(() => {
     const unsub = firebase
       .firestore()
-      .collection('products')
-      .onSnapshot(snapshot => {
-        const newProducts = snapshot.docs.map(doc => ({
+      .collection("products")
+      .onSnapshot((snapshot) => {
+        const newProducts = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
