@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import ProductTable from './ProductTable';
-import SearchBar from './SearchBar';
-import useProducts from '../productsHook';
+import useProducts from "../../hooks/productsHook";
+import SearchBar from "../Search/SearchBar";
+import ProductTable from "./ProductTable";
 
-import './FilterableProductTable.css';
+import "./FilterableTable.css";
 
-function FilterableProductTable(props) {
-
-  const [filterText, setFilterText] = useState('');
+function FilterableTable(props) {
+  const [filterText, setFilterText] = useState("");
   const [filterCategory, setFilterCategory] = useState([]);
   const [outOfStockOnly, setOutOfStockOnly] = useState(false);
   const [hasOutOfStock, setHasOutOfStock] = useState(false);
@@ -23,24 +22,23 @@ function FilterableProductTable(props) {
 
     setHasOutOfStock(outOfStockCount > 0);
   }, [products]);
-  
-  
-  const handleFilterTextChange = event => {
+
+  const handleFilterTextChange = (event) => {
     const text = event.target.value;
     setFilterText(text);
   };
 
-  const handleOutOfStockChange = event => {
+  const handleOutOfStockChange = (event) => {
     const checked = event.target.checked;
     setOutOfStockOnly(checked);
   };
 
-  const handleFilterChange = category => {
+  const handleFilterChange = (category) => {
     setFilterCategory(category);
   };
 
   return (
-    <div className="filterable-product-table">
+    <div className="filterable-table">
       <SearchBar
         products={products}
         filterText={filterText}
@@ -53,7 +51,7 @@ function FilterableProductTable(props) {
       />
       <ProductTable
         products={products}
-        filterText={filterText.length > 1 ? filterText : ''}
+        filterText={filterText.length > 1 ? filterText : ""}
         filterCategory={filterCategory}
         outOfStockOnly={outOfStockOnly}
         handleEditProduct={props.handleEditProduct}
@@ -62,4 +60,4 @@ function FilterableProductTable(props) {
   );
 }
 
-export default FilterableProductTable;
+export default FilterableTable;

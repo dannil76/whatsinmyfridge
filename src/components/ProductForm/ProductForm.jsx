@@ -1,9 +1,9 @@
-import React from 'react';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React from "react";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
-import './ProductForm.css';
+import "./ProductForm.css";
 
 function ProductForm(props) {
   const {
@@ -17,11 +17,11 @@ function ProductForm(props) {
     handleModal,
   } = props;
 
-  const onProductNameChange = event => {
+  const onProductNameChange = (event) => {
     setProductName(event.currentTarget.value);
   };
 
-  const onProductCategoryChange = event => {
+  const onProductCategoryChange = (event) => {
     setProductCategory(event.currentTarget.value);
   };
 
@@ -62,12 +62,7 @@ function ProductForm(props) {
       <Button variant="success" type="submit" block="true" size="lg">
         Spara
       </Button>
-      <Button
-        variant="dark"
-        type="button"
-        block="true"
-        onClick={handleModal}
-      >
+      <Button variant="dark" type="button" block="true" onClick={handleModal}>
         Stäng
       </Button>
     </Form>

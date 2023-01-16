@@ -1,11 +1,11 @@
-import React from 'react';
-import Form from 'react-bootstrap/Form';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
+import React from "react";
+import Form from "react-bootstrap/Form";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import ToggleButton from "react-bootstrap/ToggleButton";
 
-import Filter from './Filter';
+import Filter from "../Filter/Filter";
 
-import './SearchBar.css';
+import "./SearchBar.css";
 
 function SearchBar(props) {
   const {
@@ -27,7 +27,7 @@ function SearchBar(props) {
   }, []);
 
   return (
-    <Form className="SearchBar" onSubmit={event => event.preventDefault()}>
+    <Form className="SearchBar" onSubmit={(event) => event.preventDefault()}>
       <Form.Group controlId="searchField">
         <Form.Control
           type="text"
@@ -54,7 +54,7 @@ function SearchBar(props) {
           size="sm"
           onChange={onFilterCategoryChange}
         >
-          {filterableCategories.map(category => {
+          {filterableCategories.map((category) => {
             return (
               <ToggleButton key={category} value={category} variant="secondary">
                 {category}

@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-import FilterableProductTable from "./components/FilterableProductTable";
+import FilterableTable from "./components/Table/FilterableTable";
 import AddProduct from "./components/AddProduct";
 import EditProduct from "./components/EditProduct";
 
@@ -30,7 +30,7 @@ function App() {
       <Container className="mt-3">
         <Row className="justify-content-md-center">
           <Col>
-            <FilterableProductTable
+            <FilterableTable
               handleModal={handleModal}
               handleEditProduct={handleEditProduct}
             />

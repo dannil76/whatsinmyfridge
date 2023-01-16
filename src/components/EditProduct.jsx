@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import ProductForm from './ProductForm';
+import ProductForm from "./ProductForm/ProductForm";
 // import firebase from '../firebase';
 
 function EditProduct(props) {
@@ -8,7 +8,7 @@ function EditProduct(props) {
   const [productCategory, setProductCategory] = useState(props.productCategory);
   const [inStock, setInStock] = useState(props.inStock);
 
-  const onEditProductSubmit = event => {
+  const onEditProductSubmit = (event) => {
     event.preventDefault();
     // firebase
     //   .firestore()

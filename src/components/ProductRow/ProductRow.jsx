@@ -1,11 +1,11 @@
-import React from 'react';
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
+import React from "react";
+import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 
-import './ProductRow.css';
+import "./ProductRow.css";
 
 function ProductRow({ product, handleEditProduct }) {
-  const { id, name, stocked } = product;
+  const { name, stocked } = product;
 
   const productDisplayName = stocked ? (
     name
@@ -20,7 +20,12 @@ function ProductRow({ product, handleEditProduct }) {
     <tr>
       <td className="name">{productDisplayName}</td>
       <td className="action">
-        <Button size="sm" variant="secondary" value="edit" data={`product-${id}`} onClick={handleEditProduct}>
+        <Button
+          size="sm"
+          variant="secondary"
+          value="edit"
+          onClick={handleEditProduct}
+        >
           Ändra
         </Button>
       </td>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import firebase from "./firebase";
+import firebase from "../services/firebase";
 
 function useProducts() {
   const [products, setProducts] = useState([]);

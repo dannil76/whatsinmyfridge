@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import ProductForm from './ProductForm';
-import firebase from '../firebase';
+import ProductForm from "./ProductForm/ProductForm";
+import firebase from "../services/firebase";
 
 function AddProduct(props) {
-  const [productName, setProductName] = useState('');
-  const [productCategory, setProductCategory] = useState('');
+  const [productName, setProductName] = useState("");
+  const [productCategory, setProductCategory] = useState("");
   const [inStock, setInStock] = useState(false);
 
-  const onAddProductSubmit = event => {
+  const onAddProductSubmit = (event) => {
     event.preventDefault();
     firebase
       .firestore()
-      .collection('products')
+      .collection("products")
       .add({
         name: productName,
         category: productCategory,
         stocked: inStock,
       })
       .then(() => {
-        setProductName('');
-        setProductCategory('');
+        setProductName("");
+        setProductCategory("");
         setInStock(false);
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   };
 
   return (

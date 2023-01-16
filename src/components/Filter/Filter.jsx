@@ -1,8 +1,8 @@
-import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
+import React from "react";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
 
-import './Filter.css';
+import "./Filter.css";
 
 function Filter({ children }) {
   return (
