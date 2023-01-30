@@ -1,28 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+import useProducts from "./hooks/productsHook";
 import FilterableTable from "./components/Table/FilterableTable";
-import AddProduct from "./components/AddProduct";
-import EditProduct from "./components/EditProduct";
+import ModalContent from "./components/ModalContent";
 
 function App() {
-  const [displayModalState, setDisplayModalState] = useState(false);
-  const [productAddEditState, setProductAddEditState] = useState(null);
+  const [showModalState, setShowModalState] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const handleModal = (event) => {
-    const productAddEditButtonValue = event.currentTarget.value;
-    setProductAddEditState(productAddEditButtonValue);
-    setDisplayModalState(!displayModalState);
-  };
+  const productsCollection = useProducts();
 
-  const handleEditProduct = (event) => {
-    const productAddEditButtonValue = event.currentTarget.value;
-    setProductAddEditState(productAddEditButtonValue);
-    setDisplayModalState(!displayModalState);
+  useEffect(() => {
+    setProducts(productsCollection);
+  }, [productsCollection]);
+
+  useEffect(() => {
+    !!selectedProduct && setShowModalState(true);
+  }, [selectedProduct]);
+
+  const handleAdd = () => {
+    setShowModalState(!showModalState);
   };
 
   return (
@@ -31,21 +34,22 @@ function App() {
         <Row className="justify-content-md-center">
           <Col>
             <FilterableTable
-              handleModal={handleModal}
-              handleEditProduct={handleEditProduct}
+              products={products}
+              setProducts={setProducts}
+              setSelectedProduct={setSelectedProduct}
             />
           </Col>
         </Row>
-        <Button variant="info" onClick={handleModal} value="add" block="true">
+        <Button variant="info" onClick={handleAdd} block="true">
           Lägg till
         </Button>
       </Container>
-      <Modal show={displayModalState} centered="true" onHide={handleModal}>
-        {productAddEditState === "add" ? (
-          <AddProduct handleModal={handleModal} />
-        ) : (
-          <EditProduct handleModal={handleModal} />
-        )}
+      <Modal
+        show={showModalState}
+        centered="true"
+        onEscapeKeyDown={() => setShowModalState(false)}
+      >
+        <ModalContent selectedProduct={selectedProduct} products={products} />
       </Modal>
     </>
   );

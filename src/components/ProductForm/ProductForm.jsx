@@ -7,36 +7,35 @@ import "./ProductForm.css";
 
 function ProductForm(props) {
   const {
-    handleSubmit,
-    setProductName,
-    productName,
-    setProductCategory,
-    productCategory,
-    setInStock,
-    inStock,
-    handleModal,
+    handleSubmitForm,
+    setName,
+    name,
+    setCategory,
+    category,
+    setStocked,
+    stocked,
   } = props;
 
   const onProductNameChange = (event) => {
-    setProductName(event.currentTarget.value);
+    setName(event.currentTarget.value);
   };
 
   const onProductCategoryChange = (event) => {
-    setProductCategory(event.currentTarget.value);
+    setCategory(event.currentTarget.value);
   };
 
   const onStockChange = () => {
-    setInStock(!inStock);
+    setStocked(!stocked);
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="product-form">
+    <Form onSubmit={handleSubmitForm} className="product-form">
       <Form.Row>
         <Form.Group as={Col} xs="6" controlId="productName">
           <Form.Control
             type="text"
             placeholder="Namn"
-            value={productName}
+            value={name}
             onChange={onProductNameChange}
           />
         </Form.Group>
@@ -44,7 +43,7 @@ function ProductForm(props) {
           <Form.Control
             type="text"
             placeholder="Kategori"
-            value={productCategory}
+            value={category}
             onChange={onProductCategoryChange}
           />
         </Form.Group>
@@ -53,7 +52,7 @@ function ProductForm(props) {
         <Form.Group as={Col} xs="12" controlId="inStock">
           <Form.Check
             type="switch"
-            checked={inStock}
+            checked={stocked}
             onChange={onStockChange}
             label="I lager"
           />
@@ -62,7 +61,7 @@ function ProductForm(props) {
       <Button variant="success" type="submit" block="true" size="lg">
         Spara
       </Button>
-      <Button variant="dark" type="button" block="true" onClick={handleModal}>
+      <Button variant="dark" type="button" block="true">
         Stäng
       </Button>
     </Form>

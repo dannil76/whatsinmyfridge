@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import useProducts from "../../hooks/productsHook";
 import SearchBar from "../Search/SearchBar";
 import ProductTable from "./ProductTable";
 
@@ -12,16 +11,14 @@ function FilterableTable(props) {
   const [outOfStockOnly, setOutOfStockOnly] = useState(false);
   const [hasOutOfStock, setHasOutOfStock] = useState(false);
 
-  const products = useProducts();
-
   useEffect(() => {
-    const outOfStockCount = products.reduce((acc, { stocked }) => {
+    const outOfStockCount = props.products.reduce((acc, { stocked }) => {
       !stocked && acc++;
       return acc;
     }, 0);
 
     setHasOutOfStock(outOfStockCount > 0);
-  }, [products]);
+  }, [props.products]);
 
   const handleFilterTextChange = (event) => {
     const text = event.target.value;
@@ -29,8 +26,8 @@ function FilterableTable(props) {
   };
 
   const handleOutOfStockChange = (event) => {
-    const checked = event.target.checked;
-    setOutOfStockOnly(checked);
+    const isChecked = event.target.checked;
+    setOutOfStockOnly(isChecked);
   };
 
   const handleFilterChange = (category) => {
@@ -40,7 +37,7 @@ function FilterableTable(props) {
   return (
     <div className="filterable-table">
       <SearchBar
-        products={products}
+        products={props.products}
         filterText={filterText}
         onFilterTextChange={handleFilterTextChange}
         filterCategory={filterCategory}
@@ -50,11 +47,11 @@ function FilterableTable(props) {
         hasOutOfStock={hasOutOfStock}
       />
       <ProductTable
-        products={products}
+        products={props.products}
         filterText={filterText.length > 1 ? filterText : ""}
         filterCategory={filterCategory}
         outOfStockOnly={outOfStockOnly}
-        handleEditProduct={props.handleEditProduct}
+        setSelectedProduct={props.setSelectedProduct}
       />
     </div>
   );

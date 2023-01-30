@@ -10,7 +10,7 @@ function ProductTable(props) {
     filterText,
     filterCategory,
     outOfStockOnly,
-    handleEditProduct,
+    setSelectedProduct,
   } = props;
 
   const rows = [];
@@ -38,7 +38,7 @@ function ProductTable(props) {
     rows.push(
       <ProductRow
         product={product}
-        handleEditProduct={handleEditProduct}
+        setSelectedProduct={setSelectedProduct}
         key={id}
       />
     );

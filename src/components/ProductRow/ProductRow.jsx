@@ -4,8 +4,8 @@ import Button from "react-bootstrap/Button";
 
 import "./ProductRow.css";
 
-function ProductRow({ product, handleEditProduct }) {
-  const { name, stocked } = product;
+function ProductRow({ product, setSelectedProduct }) {
+  const { id, name, stocked } = product;
 
   const productDisplayName = stocked ? (
     name
@@ -16,6 +16,11 @@ function ProductRow({ product, handleEditProduct }) {
     </>
   );
 
+  function handleClick() {
+    console.log('ID', id);
+    setSelectedProduct(id);
+  }
+
   return (
     <tr>
       <td className="name">{productDisplayName}</td>
@@ -23,8 +28,7 @@ function ProductRow({ product, handleEditProduct }) {
         <Button
           size="sm"
           variant="secondary"
-          value="edit"
-          onClick={handleEditProduct}
+          onClick={handleClick}
         >
           Ändra
         </Button>
