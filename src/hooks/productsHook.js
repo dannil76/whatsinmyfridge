@@ -1,24 +1,11 @@
 import { useEffect, useState } from "react";
-
-import firebase from "../services/firebase";
+import Products from "../mocks/Products";
 
 function useProducts() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const unsub = firebase
-      .firestore()
-      .collection("products")
-      .onSnapshot((snapshot) => {
-        const newProducts = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-
-        setProducts(newProducts);
-      });
-
-    return () => unsub();
+    setProducts(Products);
   }, []);
 
   products.sort((a, b) => {
